@@ -9,11 +9,11 @@ const StyledWrapper = styled.div`
     font-weight: 600;
   }
 
-  .product-rating {
+  .product-average-rating {
     margin-top: 2rem;
     align-items: center;
 
-    .rating-average {
+    .rating {
       font-weight: 600;
       position: relative;
       top: 3px;
