@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import { useQuery } from 'react-query';
+import ReactStars from 'react-stars'
 import ProductsApi from 'api/products';
 import StyledWrapper from './StyledWrapper';
+import {getAverageRating} from 'utils/product';
 
 const Product = () => {
   const [productId, setProductId] = useState(1);
@@ -20,7 +22,7 @@ const Product = () => {
   }
   
   const product = data.data;
-  const productAverageRating = 2
+  const productAverageRating = getAverageRating(product.ratings);
   const imageUrl = `assets/images/${product.image_url}`;
 
   return (
@@ -33,10 +35,15 @@ const Product = () => {
           <h2 className="title">{product.name}</h2>
           <div className="text-muted">{product.description}</div>
           <h4 className="mt-4">${product.price.toFixed(2)}</h4>
-          <div className="product-info d-flex flex-row mt-5 pb-2">
-            <div className="me-2 rating-average">{productAverageRating.toFixed(1)}</div>
+          <div className="product-rating d-flex flex-row pb-1">
+            <div className="mr-2 rating-average">{productAverageRating.toFixed(1)}</div>
             <div className="rating">
-              <div className="rating-average-stars"></div>
+              <ReactStars
+                count={5}
+                value={productAverageRating}
+                size={30}
+                color2={'#ffa700'}
+              />
             </div>
           </div>
           <div className="mt-4">

@@ -9,17 +9,14 @@ const StyledWrapper = styled.div`
     font-weight: 600;
   }
 
-  .rating-average {
-    font-weight: 600;
-    position: relative;
-    top: 3px;
-  }
-
-  .product-info {
+  .product-rating {
+    margin-top: 2rem;
     align-items: center;
 
-    h3 {
-      margin-bottom: 0;
+    .rating-average {
+      font-weight: 600;
+      position: relative;
+      top: 3px;
     }
   }
 `;

@@ -12,9 +12,11 @@
   "dependencies": {
     "axios": "^0.21.4",
     "bootstrap": "^4.6.0",
+    "lodash": "^4.17.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-query": "^3.23.2",
+    "react-stars": "^2.2.5",
     "reactstrap": "^8.10.0",
     "styled-components": "^5.3.1"
   },
