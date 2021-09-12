@@ -8,8 +8,7 @@ import {
   NavItem,
   NavLink,
   Input,
-  Button,
-  NavbarText
+  Button
 } from 'reactstrap';
 import StyledWrapper from './StyledWrapper';
 import SlickLogoIcon from '../../../assets/images/logo-icon.svg';

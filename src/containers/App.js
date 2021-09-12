@@ -2,6 +2,7 @@ import React from 'react';
 import GlobalStyle from '../globalStyles';
 import StyledWrapper from './StyledWrapper';
 import Navbar from '../components/Navbar';
+import Product from '../components/Product';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,7 +14,7 @@ const App = () => {
         <div className="w-full">
           <StyledWrapper className="mx-auto px-6">
             <Navbar/>
-            Hello Slick
+            <Product />
           </StyledWrapper>
         </div>
       </main>
