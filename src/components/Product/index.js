@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import ReactStars from 'react-stars';
+import io from 'socket.io-client';
 import ProductsApi from 'api/products';
 import toast, { Toaster } from 'react-hot-toast';
 import StyledWrapper from './StyledWrapper';
@@ -11,6 +12,19 @@ import {getAverageRating} from 'utils/product';
 const Product = () => {
   const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
   const [productId, setProductId] = useState(1);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io(`http://${window.location.hostname}:9000`);
+    setSocket(newSocket);
+
+    newSocket.on('product-rating:added', (payload) => {
+      console.log(payload);
+    });
+
+  return () => newSocket.close();
+  }, [setSocket]);
+
   const {
     isLoading,
     data

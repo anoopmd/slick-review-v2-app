@@ -77,8 +77,8 @@ const AddProductRating = ({
           >
             Submit Review
           </button>
-          {isSubmittingReview && <span class="spinner-container spinner"></span>}
-          {isError && <div class="text-danger">Oops! An error occured while submitting the review</div>}
+          {isSubmittingReview && <span className="spinner-container spinner"></span>}
+          {isError && <div className="text-danger">Oops! An error occured while submitting the review</div>}
         </ModalFooter>
       </Modal>
     </div>
