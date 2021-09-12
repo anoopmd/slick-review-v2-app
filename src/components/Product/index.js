@@ -1,37 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
 import ReactStars from 'react-stars';
-import io from 'socket.io-client';
-import ProductsApi from 'api/products';
 import toast, { Toaster } from 'react-hot-toast';
 import StyledWrapper from './StyledWrapper';
 import ProductRating from '../ProductRating';
 import AddProductRating from '../AddProductRating';
 import {getAverageRating} from 'utils/product';
+import useProductQuery from './useProductQuery';
 
 const Product = () => {
   const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
   const [productId, setProductId] = useState(1);
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const newSocket = io(`http://${window.location.hostname}:9000`);
-    setSocket(newSocket);
-
-    newSocket.on('product-rating:added', (payload) => {
-      console.log(payload);
-    });
-
-  return () => newSocket.close();
-  }, [setSocket]);
 
   const {
     isLoading,
-    data
-  } = useQuery(
-    ['get-product-by-id', productId],
-    () => ProductsApi.getById(productId)
-  );
+    isError,
+    product
+  } = useProductQuery(productId);
 
   if(isLoading) {
     return (
@@ -39,7 +23,14 @@ const Product = () => {
     );
   }
   
-  const product = data.data;
+  if(isError) {
+    return (
+      <StyledWrapper>
+        <div className="text-danger">An error occured while fetching the product!</div>
+      </StyledWrapper>
+    );
+  }
+  
   const productRatings = product.ratings;
   const productAverageRating = getAverageRating(productRatings);
   const imageUrl = `assets/images/${product.image_url}`;
