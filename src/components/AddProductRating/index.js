@@ -18,11 +18,13 @@ const AddProductRating = ({
   }
 
   const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
 
   const handleSubmitReview = () => {
     setIsSubmittingReview(true);
+    setIsError(false);
     ProductRatings
       .add(productId, rating, review)
       .then(() => {
@@ -32,6 +34,7 @@ const AddProductRating = ({
         onSuccess();
       })
       .catch((error) => {
+        setIsError(true);
         setIsSubmittingReview(false);
       });
   };
@@ -74,6 +77,8 @@ const AddProductRating = ({
           >
             Submit Review
           </button>
+          {isSubmittingReview && <span class="spinner-container spinner"></span>}
+          {isError && <div class="text-danger">Oops! An error occured while submitting the review</div>}
         </ModalFooter>
       </Modal>
     </div>

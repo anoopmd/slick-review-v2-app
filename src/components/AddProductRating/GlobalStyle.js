@@ -32,10 +32,6 @@ const GlobalStyle = createGlobalStyle`
         min-width: 135px;
         margin-right: 20px;
       }
-
-      .error-message {
-        display: none;
-      }
     }
   }
 `;
