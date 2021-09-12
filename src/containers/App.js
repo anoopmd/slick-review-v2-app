@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <React.Fragment>
-      <main className="flex flex-grow slick-app">
+      <main className="flex flex-grow slick-app container-fluid">
         <GlobalStyle/>
         <div className="w-full">
           <StyledWrapper className="mx-auto px-6">
