@@ -31,7 +31,11 @@ const Product = () => {
 
   return (
     <StyledWrapper className="product">
-      <AddProductRating isOpen={isAddReviewModalOpen} onClose={() => setIsAddReviewModalOpen(false)}/>
+      <AddProductRating
+        isOpen={isAddReviewModalOpen}
+        onClose={() => setIsAddReviewModalOpen(false)}
+        productId={product.id}
+      />
       <div className="d-flex flex-column flex-sm-row">
         <div className="mr-4 pb-4">
           <img src={imageUrl} width="200px"/>
