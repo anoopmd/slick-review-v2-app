@@ -28,6 +28,14 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "@svgr/webpack"
+          }
+        ]
       }
     ]
   },
