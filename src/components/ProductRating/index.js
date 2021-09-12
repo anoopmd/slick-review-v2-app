@@ -13,6 +13,7 @@ const ProductRating = ({
           count={5}
           value={rating}
           size={24}
+          color1={'#D3D3D3'}
           color2={'#ffa700'}
           edit={false}
         />

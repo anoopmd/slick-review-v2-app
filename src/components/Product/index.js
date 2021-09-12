@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import { useQuery } from 'react-query';
-import ReactStars from 'react-stars'
+import ReactStars from 'react-stars';
 import ProductsApi from 'api/products';
 import StyledWrapper from './StyledWrapper';
 import ProductRating from '../ProductRating';
+import AddProductRating from '../AddProductRating';
 import {getAverageRating} from 'utils/product';
-import Products from 'api/products';
 
 const Product = () => {
+  const [isAddReviewModalOpen, setIsAddReviewModalOpen] = useState(false);
   const [productId, setProductId] = useState(1);
   const {
     isLoading,
@@ -30,6 +31,7 @@ const Product = () => {
 
   return (
     <StyledWrapper className="product">
+      <AddProductRating isOpen={isAddReviewModalOpen} onClose={() => setIsAddReviewModalOpen(false)}/>
       <div className="d-flex flex-column flex-sm-row">
         <div className="mr-4 pb-4">
           <img src={imageUrl} width="200px"/>
@@ -45,13 +47,20 @@ const Product = () => {
                 count={5}
                 value={productAverageRating}
                 size={30}
+                color1={'#D3D3D3'}
                 color2={'#ffa700'}
                 edit={false}
               />
             </div>
           </div>
           <div className="mt-4">
-            <button type="button" className="btn btn-outline-dark add-review">Add Review</button>
+            <button
+              type="button"
+              className="btn btn-outline-dark add-review"
+              onClick={() => setIsAddReviewModalOpen(true)}
+            >
+              Add Review
+            </button>
           </div>
         </div>
       </div>
