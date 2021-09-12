@@ -16,6 +16,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-toast": "^2.1.1",
     "react-query": "^3.23.2",
     "react-stars": "^2.2.5",
     "reactstrap": "^8.10.0",

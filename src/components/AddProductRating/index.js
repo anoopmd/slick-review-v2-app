@@ -8,6 +8,7 @@ import GlobalStyle from './GlobalStyle';
 const AddProductRating = ({
   productId,
   isOpen,
+  onSuccess,
   onClose
 }) => {
   const closeModal = () => {
@@ -26,7 +27,9 @@ const AddProductRating = ({
       .add(productId, rating, review)
       .then(() => {
         setIsSubmittingReview(false);
-        closeModal();
+        setRating(0);
+        setReview('');
+        onSuccess();
       })
       .catch((error) => {
         setIsSubmittingReview(false);
@@ -80,6 +83,7 @@ const AddProductRating = ({
 AddProductRating.propTypes = {
   isOpen: PropTypes.bool,
   productId: PropTypes.number,
+  onSuccess: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

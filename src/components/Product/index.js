@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useQuery } from 'react-query';
 import ReactStars from 'react-stars';
 import ProductsApi from 'api/products';
+import toast, { Toaster } from 'react-hot-toast';
 import StyledWrapper from './StyledWrapper';
 import ProductRating from '../ProductRating';
 import AddProductRating from '../AddProductRating';
@@ -29,13 +30,23 @@ const Product = () => {
   const productAverageRating = getAverageRating(productRatings);
   const imageUrl = `assets/images/${product.image_url}`;
 
+  const onRatingAddSuccess = () => {
+    toast.success('Thank you for your review!', {
+      duration: 2000,
+      position: 'top-center',
+    });
+    setIsAddReviewModalOpen(false);
+  };
+
   return (
     <StyledWrapper className="product">
       <AddProductRating
         isOpen={isAddReviewModalOpen}
         onClose={() => setIsAddReviewModalOpen(false)}
+        onSuccess={onRatingAddSuccess}
         productId={product.id}
       />
+      <Toaster />
       <div className="d-flex flex-column flex-sm-row">
         <div className="mr-4 pb-4">
           <img src={imageUrl} width="200px"/>
