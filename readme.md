@@ -1,5 +1,5 @@
 # Slick Review App V2
-UI for the Slick Review App V2
+UI for the Slick Review App V2 - Code challenge that I did while interviewing for Gumroad.
 
 ## Installation
 Clone from repository:
